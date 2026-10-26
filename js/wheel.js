@@ -23,7 +23,7 @@ const drawWheel = () => {
   const centerY = height / 2;
   const radius = Math.min(width, height) / 2;
   const segmentAngle = (Math.PI * 2) / WHEEL_OPTIONS.length;
-  const colors = ["#ffcf5c", "#ff5f6d", "#75c97a", "#6fc7f5", "#b48bf5", "#ffe4e8", "#fff5e8", "#ffd9a0"];
+  const colors = ["#f7d51d", "#e76e55", "#92cc41", "#209cee", "#b48bf5", "#fce8e4", "#f8f8f8", "#ffd9a0"];
 
   WHEEL_OPTIONS.forEach((label, index) => {
     const startAngle = -Math.PI / 2 + index * segmentAngle;
@@ -34,14 +34,14 @@ const drawWheel = () => {
     wheelContext.closePath();
     wheelContext.fillStyle = colors[index % colors.length];
     wheelContext.fill();
-    wheelContext.strokeStyle = "#2f241c";
+    wheelContext.strokeStyle = "#212529";
     wheelContext.lineWidth = 3;
     wheelContext.stroke();
 
     wheelContext.save();
     wheelContext.translate(centerX, centerY);
     wheelContext.rotate(startAngle + segmentAngle / 2);
-    wheelContext.fillStyle = "#2f241c";
+    wheelContext.fillStyle = "#212529";
     wheelContext.font = "bold 14px 'PingFang SC', 'Microsoft YaHei', sans-serif";
     wheelContext.textAlign = "right";
     wheelContext.fillText(label, radius - 16, 5);

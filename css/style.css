@@ -13,7 +13,7 @@
   --border: #212529;
   --pixel-shadow: 4px 4px 0 #212529;
   --radius: 0;
-  --pixel-font: "Zpix", "Press Start 2P", "PingFang SC", "Microsoft YaHei", monospace;
+  --pixel-font: "Press Start 2P", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", monospace;
 }
 
 * {
@@ -314,10 +314,7 @@ canvas {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  image-rendering: pixelated;
   filter: saturate(1.15) contrast(1.05);
-  image-rendering: auto;
-  clip-path: inset(0);
 }
 
 .photo-frame::after {
@@ -629,8 +626,8 @@ canvas {
   width: 100%;
   aspect-ratio: 1;
   border: none;
-  border-radius: 0;
-  background: var(--panel);
+  border-radius: 50%; /* 转动时保持圆形，方形白底会扫到下方文字 */
+  background: transparent;
   transform: rotate(0deg);
   transition: transform 3.2s cubic-bezier(0.18, 0.74, 0.24, 1);
 }
@@ -664,7 +661,7 @@ canvas {
   bottom: 0;
   z-index: 15;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   width: min(520px, 100%);
   border-top: 2px solid var(--ink);
   background: #fff;
