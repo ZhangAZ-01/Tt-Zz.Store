@@ -276,6 +276,10 @@ canvas {
   background: var(--yellow);
 }
 
+.tile:nth-child(5) {
+  background: #e6ddf9;
+}
+
 .tile:last-child {
   grid-column: span 2;
   background: var(--panel);
@@ -324,6 +328,31 @@ canvas {
   content: attr(data-caption);
   color: var(--muted);
   font-size: 0.68rem;
+}
+
+/* 未解锁的相框 */
+.photo-locked {
+  display: grid;
+  place-items: center;
+  background: #eceff1;
+}
+
+.photo-locked::before {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+}
+
+.locked-mark {
+  position: absolute;
+  top: calc(50% - 13px);
+  left: 0;
+  width: 100%;
+  color: #b0bec5;
+  font-size: 2.4rem;
+  font-weight: 900;
+  text-align: center;
 }
 
 /* 状态条：像游戏 HP */
@@ -620,10 +649,13 @@ canvas {
   position: relative;
   width: min(320px, 88vw);
   margin: 0 auto;
+  margin-top: 14px; /* 给指针留出空间 */
 }
 
 .wheel-canvas {
+  display: block;
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 1;
   border: none;
   border-radius: 50%; /* 转动时保持圆形，方形白底会扫到下方文字 */
@@ -661,7 +693,7 @@ canvas {
   bottom: 0;
   z-index: 15;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   width: min(520px, 100%);
   border-top: 2px solid var(--ink);
   background: #fff;

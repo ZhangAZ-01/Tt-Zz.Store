@@ -10,8 +10,12 @@ let spinning = false;
 
 const setupWheelCanvas = () => {
   const rect = wheelStage.getBoundingClientRect();
-  wheelCanvas.width = Math.round(rect.width * devicePixelRatio);
-  wheelCanvas.height = Math.round(rect.width * devicePixelRatio);
+  const stageSize = Math.round(rect.width);
+  // 显式设置显示尺寸，避免旧版 iOS 不支持 aspect-ratio 时高度回退成位图高度
+  wheelCanvas.style.width = `${stageSize}px`;
+  wheelCanvas.style.height = `${stageSize}px`;
+  wheelCanvas.width = Math.round(stageSize * devicePixelRatio);
+  wheelCanvas.height = Math.round(stageSize * devicePixelRatio);
   wheelContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
   drawWheel();
 };
